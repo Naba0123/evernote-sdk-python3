@@ -24,7 +24,7 @@ auth_token = "your developer token"
 
 if auth_token == "your developer token":
     print("Please fill in your developer token")
-    print("To get a developer token, visit " \
+    print("To get a developer token, visit "
           "https://sandbox.evernote.com/api/DeveloperToken.action")
     exit(1)
 
@@ -36,10 +36,10 @@ if auth_token == "your developer token":
 # To access production (International) service, set both sandbox and china to False
 # To access production (China) service, set sandbox to False and china to True
 
-sandbox=True
-china=False
+sandbox = True
+china = False
 
-client = EvernoteClient(token=auth_token, sandbox=sandbox,china=china)
+client = EvernoteClient(token=auth_token, sandbox=sandbox, china=china)
 
 user_store = client.get_user_store()
 
@@ -79,11 +79,11 @@ with open(image_path, 'rb') as image_file:
     image = image_file.read()
 md5 = hashlib.md5()
 md5.update(image)
-hash = md5.digest()
+hash2 = md5.digest()
 
 data = Types.Data()
 data.size = len(image)
-data.bodyHash = hash
+data.bodyHash = hash2
 data.body = image
 
 resource = Types.Resource()
@@ -96,7 +96,7 @@ note.resources = [resource]
 # To display the Resource as part of the note's content, include an <en-media>
 # tag in the note's ENML content. The en-media tag identifies the corresponding
 # Resource using the MD5 hash.
-hash_hex = binascii.hexlify(hash)
+hash_hex = binascii.hexlify(hash2)
 hash_str = hash_hex.decode("UTF-8")
 
 # The content of an Evernote note is represented using Evernote Markup Language
